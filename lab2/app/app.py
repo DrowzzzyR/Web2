@@ -6,7 +6,6 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    # url = request.url
     return render_template('index.html')
 
 
@@ -89,7 +88,7 @@ def form_telephone():
         telephone_after = list(telephone.strip(' .()-+0123456789'))
         if telephone_after != []:
                 error_text = 'Недопустимый ввод. В номере телефона встречаются недопустимые символы.'
-                # return render_template('form_telephone.html', error_text = error_text) 
+
         else:
             for i in list(telephone):
                 if i.isdigit():
@@ -97,18 +96,18 @@ def form_telephone():
             if telephone[0] == '8' or (telephone[0] == '+' and telephone[1] == '7'):
                 if k != 11:
                     error_text = 'Недопустимый ввод. Неверное количество цифр.'
-                    # return render_template('form_telephone.html', error_text = error_text) 
+
                 else:
                     error_text = ''
                     temptel = str(template_telephone(telephone))
-                    # return render_template('form_telephone.html', error_text = error_text, temptel = temptel) 
+
             elif k != 10:
                         error_text = 'Недопустимый ввод. Неверное количество цифр.'
-                        # return render_template('form_telephone.html', error_text = error_text) 
+
             else:
                 error_text = ''
                 temptel = str(template_telephone(telephone))
-                # return render_template('form_telephone.html', error_text = error_text, temptel = temptel) 
+
     return render_template('form_telephone.html', error_text = error_text, temptel = temptel)
 
 
