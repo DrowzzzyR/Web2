@@ -21,13 +21,6 @@ class User(UserMixin):
 def index():
     return render_template('index.html')
 
-@app.route('/visits')
-def visits():
-    if 'visits_count' in session:
-        session['visits_count'] += 1
-    else:
-        session['visits_count'] = 1
-    return render_template('visits.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
